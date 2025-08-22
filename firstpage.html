@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web App Features</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <div class="app-container">
+  
+    <header class="app-header">
+      <h1 class="header-title">Welcome to the App</h1>
+      <p class="header-subtitle">Explore our comprehensive suite of features</p>
+    </header>
+
+    <div class="container">
+      <!-- Card 1: Chat (Functional) -->
+      <a href="chat.html" target="_blank" class="card">
+        <div class="card-icon">
+          <i data-feather="message-circle"></i>
+        </div>
+        <h2>Chat</h2>
+        <p>Connect with friends instantly.</p>
+        <span class="status-badge status-active">Available</span>
+      </a>
+
+      <!-- Card 2: Shopping (Coming Soon) -->
+      <div class="card card-disabled">
+        <div class="card-icon">
+          <i data-feather="shopping-bag"></i>
+        </div>
+        <h2>Shopping</h2>
+        <p>Buy your favorite products online.</p>
+        <span class="status-badge status-coming-soon">Coming Soon</span>
+      </div>
+
+      <!-- Card 3: Payments (Coming Soon) -->
+      <div class="card card-disabled">
+        <div class="card-icon">
+          <i data-feather="credit-card"></i>
+        </div>
+        <h2>Payments</h2>
+        <p>Send and receive money securely.</p>
+        <span class="status-badge status-coming-soon">Coming Soon</span>
+      </div>
+
+      <!-- Card 4: Food Ordering (Coming Soon) -->
+      <div class="card card-disabled">
+        <div class="card-icon">
+          <i data-feather="coffee"></i>
+        </div>
+        <h2>Food Ordering</h2>
+        <p>Order food from nearby restaurants.</p>
+        <span class="status-badge status-coming-soon">Coming Soon</span>
+      </div>
+
+      <!-- Card 5: Social Feed (Coming Soon) -->
+      <div class="card card-disabled">
+        <div class="card-icon">
+          <i data-feather="image"></i>
+        </div>
+        <h2>Social Feed</h2>
+        <p>Share posts and see updates.</p>
+        <span class="status-badge status-coming-soon">Coming Soon</span>
+      </div>
+
+      <!-- Card 6: Settings (Coming Soon) -->
+      <div class="card card-disabled">
+        <div class="card-icon">
+          <i data-feather="settings"></i>
+        </div>
+        <h2>Settings</h2>
+        <p>Manage your account preferences.</p>
+        <span class="status-badge status-coming-soon">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Feather Icons
+    feather.replace();
+  </script>
+</body>
+</html>

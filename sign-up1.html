@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universe - Sign Up</title>
+    <link rel="stylesheet" href="sign-up1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="theme-switch">
+      <i class="fas fa-moon"></i>
+    </div>
+    <!-- From Uiverse.io by akshat-patel28 -->
+    <div class="form-container">
+      <p class="title">Create An Account</p>
+      <form id="signupForm" class="form">
+        <input type="text" class="input" placeholder="Full Name" required />
+        <input type="text" class="input" placeholder="Username" required />
+        <input type="email" class="input" placeholder="Email" required />
+        <input type="date" class="input" name="dob" required />
+        <select class="input" id="gender" name="gender" required>
+          <option value="">Select Your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+          <option value="prefer-not-to-say">Prefer not to say</option>
+        </select>
+
+        <button type="submit" class="form-btn">Next</button>
+      </form>
+    </div>
+
+    <script>
+      // Load saved data when page loads
+      window.addEventListener('load', function() {
+        const savedData = JSON.parse(localStorage.getItem('userRegistrationData') || '{}');
+        
+        // If registration is already complete, clear the form for new registration
+        if (savedData.registrationComplete) {
+          // Clear all form fields
+          document.querySelector('input[placeholder="Full Name"]').value = '';
+          document.querySelector('input[placeholder="Username"]').value = '';
+          document.querySelector('input[placeholder="Email"]').value = '';
+          document.querySelector('input[name="dob"]').value = '';
+          document.querySelector('select[name="gender"]').value = '';
+          
+          // Clear the temporary registration data to start fresh
+          localStorage.removeItem('userRegistrationData');
+          return;
+        }
+        
+        // Load saved data for incomplete registration
+        if (savedData.fullName) {
+          document.querySelector('input[placeholder="Full Name"]').value = savedData.fullName;
+        }
+        if (savedData.username) {
+          document.querySelector('input[placeholder="Username"]').value = savedData.username;
+        }
+        if (savedData.email) {
+          document.querySelector('input[placeholder="Email"]').value = savedData.email;
+        }
+        if (savedData.dob) {
+          document.querySelector('input[name="dob"]').value = savedData.dob;
+        }
+        if (savedData.gender) {
+          document.querySelector('select[name="gender"]').value = savedData.gender;
+        }
+      });
+
+      document.getElementById("signupForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const fullName = document
+          .querySelector('input[placeholder="Full Name"]')
+          .value.trim();
+        const username = document
+          .querySelector('input[placeholder="Username"]')
+          .value.trim();
+        const email = document
+          .querySelector('input[placeholder="Email"]')
+          .value.trim();
+        const dob = document.querySelector('input[name="dob"]').value;
+        const gender = document.querySelector('select[name="gender"]').value;
+
+        if (fullName && username && email && dob && gender) {
+          // Check if email already exists in registered accounts
+          const allAccounts = JSON.parse(localStorage.getItem('allUserAccounts') || '[]');
+          const existingUser = allAccounts.find(account => account.email === email);
+          
+          if (existingUser) {
+            alert('An account with this email already exists. Please use a different email or try logging in.');
+            return;
+          }
+          
+          // Save data to local storage
+          const userData = {
+            fullName: fullName,
+            username: username,
+            email: email,
+            dob: dob,
+            gender: gender
+          };
+          localStorage.setItem('userRegistrationData', JSON.stringify(userData));
+          
+          window.location.href = "sign-up2.html";
+        }
+      });
+    </script>
+
+    <script src="userDataManager.js"></script>
+    <script src="theme.js"></script>
+  </body>
+</html>
